@@ -93,6 +93,7 @@ t.pack()
 win.mainloop()
 '''
 #============================================================================
+'''
 #Calculate sum
 
 win  = Tk()
@@ -124,3 +125,174 @@ sum = partial(sum, label, x1, x2)
 button = Button(win, text ='Calculate', command = sum, bg = 'grey'  )
 button.grid(row=3,column=0)
 win.mainloop()
+'''
+#============================================================================
+#Creating frames
+'''
+win = Tk()
+frame = Frame(win)
+frame.pack()
+
+frame2 = Frame(win)
+frame2.pack(side = BOTTOM)
+
+rb = Button(frame, text = 'Red', fg = 'red' )
+rb.pack(side = LEFT)
+bb = Button(frame, text = 'Blue', fg = 'blue' )
+bb.pack(side = LEFT)
+gb = Button(frame, text = 'Green', fg = 'green' )
+gb.pack(side = LEFT)
+
+gb = Button(frame2, text = 'Green', fg = 'green' )
+gb.pack(side = BOTTOM)
+
+win.mainloop()
+'''
+#============================================================================
+'''
+#Creating list
+
+win = Tk()
+
+lb = Listbox(win)
+lb.insert(1, 'Python')
+lb.insert(2, 'Js')
+lb.insert(3, 'Flutter')
+lb.insert(4, 'React')
+lb.insert(5, 'Ruby')
+lb.pack()
+win.mainloop()
+'''
+#============================================================================
+#Top Level Window
+'''
+win = Tk()
+
+win.title("First")
+top = Toplevel()
+win.title("Second")
+
+win.mainloop()
+'''
+#============================================================================
+#Message Box
+'''
+from tkinter import messagebox
+win = Tk()
+
+def hello():
+    messagebox.showinfo('From computer','Welcome!!')
+
+b = Button(win, text = 'Click Me', fg = 'green', command = hello )
+b.pack()
+
+win.mainloop()
+'''
+#============================================================================
+# Menu button/Bar
+'''
+win = Tk()
+mb =Menubutton(win, text = 'File')
+mb.grid()
+mb.menu = Menu(mb)
+mb['menu'] = mb.menu
+
+x1 = IntVar()
+x2 = IntVar()
+
+mb.menu.add_checkbutton(label = 'open', variable = x1)
+mb.menu.add_checkbutton(label = 'close', variable = x2)
+mb.pack()
+win.mainloop()
+'''
+'''
+win = Tk()
+
+def nothing():
+    file = Toplevel(win)
+    button = Button(file, text = 'do nothing')
+    button.pack()
+
+menubar = Menu(win)
+
+filemenu = Menu(menubar)
+filemenu.add_command(label= 'New Window', command = nothing)
+filemenu.add_command(label= 'New File', command = nothing)
+filemenu.add_command(label= 'New Folder', command = nothing)
+filemenu.add_command(label= 'Open File', command = nothing)
+filemenu.add_separator()
+filemenu.add_command(label= 'Save', command = nothing)
+filemenu.add_command(label= 'Save As', command = nothing)
+filemenu.add_command(label= 'Save All', command = nothing)
+filemenu.add_separator()
+filemenu.add_command(label= 'Close Tab', command = nothing)
+filemenu.add_command(label= 'Close Window', command = nothing)
+filemenu.add_separator()
+filemenu.add_command(label= 'Exit', command = win.quit)
+menubar.add_cascade(label = 'File', menu = filemenu)
+
+editmenu = Menu(menubar)
+editmenu.add_command(label= 'Undo', command = nothing)
+editmenu.add_command(label= 'Redo', command = nothing)
+editmenu.add_separator()
+editmenu.add_command(label= 'Cut', command = nothing)
+editmenu.add_command(label= 'Copy', command = nothing)
+editmenu.add_command(label= 'Paste', command = nothing)
+editmenu.add_separator()
+editmenu.add_command(label= 'Line', command = nothing)
+editmenu.add_command(label= 'Column', command = nothing)
+editmenu.add_command(label= 'Text', command = nothing)
+editmenu.add_separator()
+editmenu.add_command(label= 'Exit', command = win.quit)
+menubar.add_cascade(label = 'Edit', menu = editmenu)
+
+win.config(menu=menubar)
+win.mainloop()
+'''
+#============================================================================
+# Menu Scale, Spinbox, Scroll bar
+'''
+win = Tk()
+
+#s= Scale(win)
+#s.pack()
+
+#sb= Spinbox(win, from_ = 1, to = 10)
+#sb.pack()
+
+
+scrollbar = Scrollbar(win)
+
+scrollbar.pack(side = RIGHT, fill = Y)
+
+list = Listbox(win,yscrollcommand = scrollbar.set)
+
+for line in range(100):
+    list.insert(END, 'This is line no is '+ str(line))
+
+list.pack(side= LEFT, fill = BOTH)
+win.mainloop()
+'''
+#============================================================================
+# Paned Window
+'''
+pw = PanedWindow()
+pw.pack(fill=BOTH,expand = 1)
+
+left = Entry(pw, bd =5)
+pw.add(left)
+
+pw2 = PanedWindow(pw, orient = VERTICAL)
+pw.add(pw2)
+
+top= Scale(pw2, orient = HORIZONTAL )
+pw2.add(top)
+
+button = Button(pw2, text = 'OK')
+pw2.add(button)
+
+mainloop()
+'''
+
+#============================================================================
+# Paned Window
